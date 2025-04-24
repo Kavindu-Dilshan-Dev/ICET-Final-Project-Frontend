@@ -13,9 +13,9 @@ export class KeycloakService {
   get keycloak(){
     if (!this._keycloak) {
       this._keycloak = new Keycloak({
-        url: 'http://localhost:9090',
+        url: "http://localhost:9090",
         realm: 'Whatsapp-clone',
-        clientId: 'Whatsapp-clone-app'
+        clientId: 'whatsapp-clone-app'
       });
     }
 
@@ -32,7 +32,7 @@ export class KeycloakService {
     await this.keycloak.login();
   }
 
-  get userId(): string{
+  get userId(){
     return this.keycloak?.tokenParsed?.sub as string;
   }
 
@@ -44,7 +44,13 @@ export class KeycloakService {
     return this.keycloak.tokenParsed?.['name'] as string;
   }
 
-  
+  logout(){
+    return this.keycloak.logout({redirectUri: 'http://localhost:4200'});
+  }
+
+  accountManagement(){
+    return this.keycloak.accountManagement();
+  }
 
 
 }
