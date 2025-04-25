@@ -1,7 +1,8 @@
 import { Component, input, InputSignal, output } from '@angular/core';
 import { ChatResponse, UserResponse } from '../../services/models';
 import { DatePipe } from '@angular/common';
-import { UserService } from '../../services/services';
+import { ChatService, UserService } from '../../services/services';
+import { KeycloakService } from '../../utils/keycloak/keycloak.service';
 
 @Component({
   selector: 'app-chat-list',
@@ -21,7 +22,10 @@ export class ChatListComponent {
   chatSelected = output<ChatResponse>();
 
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private chatService: ChatService,
+    private keycloakService: KeycloakService
+
   ){
 
   }
@@ -47,8 +51,26 @@ export class ChatListComponent {
     return lastMessage?.substring(0,17)+'...';
   }
 
-  selectContact(_t34: UserResponse) {
-    throw new Error('Method not implemented.');
+  selectContact(contact: UserResponse) {
+    this.chatService.createChat({
+      'sender-id': this.keycloakService.userId as string,
+      'receiver-id': contact.id as string
+    }).subscribe({
+      next: (res) => {
+        const chat: ChatResponse = {
+          id: res.response,
+          name: contact.firstName +' '+ contact.lastName,
+          recipientOnline: contact.online,
+          lastMessageTime: contact.lastSeen,
+          senderId: this.keycloakService.userId,
+          receiverId: contact.id
+        };
+
+        this.chats().unshift(chat);
+        this.searchNewContact = false;
+        this.chatSelected.emit(chat);
+      }
+    });
   }
 
 
