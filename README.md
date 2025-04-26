@@ -1,3 +1,119 @@
+#!/bin/bash
+
+# Bash script to generate a README.md for WhatsApp Clone Project
+
+cat << 'EOF' > README.md
+# WhatsApp Clone - Full Stack Project
+
+This is a real-time **WhatsApp Clone** built using **Spring Boot**, **Angular 19**, **Keycloak**, **WebSockets**, and **Bootstrap**.  
+It features secure authentication, responsive design, real-time messaging, media uploads, and more!
+
+## 🚀 Tech Stack
+- **Backend:** Spring Boot
+- **Frontend:** Angular 19
+- **Authentication:** Keycloak
+- **Real-Time Communication:** WebSockets
+- **Styling:** Bootstrap
+- **API Documentation:** OpenAPI / Swagger
+- **Database:** PostgreSQL or MySQL
+
+## 📸 Demo
+
+| Login | Chat Interface | Sending Messages |
+|:---:|:---:|:---:|
+| ![Login Screenshot](link-to-login-screenshot) | ![Chat Screenshot](link-to-chat-screenshot) | ![Message Screenshot](link-to-message-screenshot) |
+
+> _Replace the above `link-to-*.png` with your screenshot links or GitHub hosted images._
+
+## 🛠️ Features
+- Secure Authentication & Authorization (Keycloak)
+- Real-Time Chat with WebSocket
+- Private One-on-One Messaging
+- Emoji Support
+- File/Media Uploads (Images, Files)
+- Auto Scroll to Latest Messages
+- Responsive UI (Mobile/Desktop Friendly)
+- OpenAPI (Swagger) Documentation
+- JWT Authentication Interceptor on Frontend
+- Full Synchronization between Keycloak users and App users
+
+## ⚙️ Installation
+
+### Backend (Spring Boot)
+\`\`\`bash
+# Clone the repository
+git clone https://github.com/your-username/whatsapp-clone.git
+
+# Navigate to the backend project
+cd whatsapp-clone/backend
+
+# Configure your application.properties for Database & Keycloak
+
+# Run the project
+./mvnw spring-boot:run
+\`\`\`
+
+### Frontend (Angular 19)
+\`\`\`bash
+# Navigate to the frontend project
+cd whatsapp-clone/frontend
+
+# Install dependencies
+npm install
+
+# Update environment.ts with Keycloak config
+
+# Run the project
+ng serve
+\`\`\`
+
+> ⚡ Make sure Keycloak Server is running before starting the backend and frontend.
+
+## 📄 Entity Relationship Diagram (ERD)
+- **User**
+- **Chat**
+- **Message**
+- **MediaFile**
+
+Relationship Example:
+- One User → Many Chats  
+- One Chat → Many Messages
+
+## 🔐 Keycloak Configuration
+- Create a realm (e.g., \`whatsapp-clone\`)
+- Add client configurations (confidential client)
+- Enable OpenID Connect
+- Set Redirect URIs for Angular app
+- Assign user roles
+
+## 📚 Documentation
+- APIs are available via OpenAPI (Swagger UI) at \`http://localhost:8080/swagger-ui/index.html\`
+
+## 🙌 Acknowledgements
+- Spring Boot Official Documentation
+- Angular Official Documentation
+- Keycloak Documentation
+- Bootstrap Documentation
+
+## 📬 Contact
+For any queries, feel free to reach out:
+
+- **Name:** Kavindu Dilshan
+- **Email:** kavindu4543@gmail.com
+- **LinkedIn:** [Kavindu Dilshan]([https://linkedin.com/in/your-linkedin](https://www.linkedin.com/in/kavindu-dilshan-475297287/))
+
+---
+
+
+
+
+
+
+
+
+
+
+
 # ICET Final Project Frontend
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.1.
